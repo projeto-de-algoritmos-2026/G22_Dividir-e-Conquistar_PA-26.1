@@ -37,7 +37,7 @@ O jogo funciona organizando as hordas e aplicando a seleção do Alpha da seguin
 
 O sistema aplica, de forma adaptada ao jogo:
 
-- Closest Pair of Points — para identificar e unir zumbis próximos, formando grupos/hordas de forma eficiente.
+- Par de pontos mais próximo — para identificar e unir zumbis próximos, formando grupos/hordas de forma eficiente.
 - Mediana das Medianas — para selecionar o zumbi Alpha (k-ésimo elemento) de cada horda sem ordenar toda a lista, garantindo tempo linear no pior caso.
 
 ## Screenshots
