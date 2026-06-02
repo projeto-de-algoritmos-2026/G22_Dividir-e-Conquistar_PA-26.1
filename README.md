@@ -42,6 +42,18 @@ O sistema aplica, de forma adaptada ao jogo:
 
 ## Screenshots
 
+# Tela inicial
+![Escolha](./assets/inicial.png)
+
+# Tela de execução 
+![Início](./assets/jogo.gif)
+
+# Tela de vitória
+![Melhor Rota](./assets/vitoria.png)
+
+# Tela de derrota
+![Melhor Rota](./assets/derrota.png)
+
 ## Vídeo do trabalho
 
 ## Instalação
