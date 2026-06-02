@@ -56,6 +56,8 @@ O sistema aplica, de forma adaptada ao jogo:
 
 ## Vídeo do trabalho
 
+[Clique aqui para assistir à demonstração](https://youtu.be/uMz11Ymd-VM)
+
 ## Instalação
 
 Como executar:
