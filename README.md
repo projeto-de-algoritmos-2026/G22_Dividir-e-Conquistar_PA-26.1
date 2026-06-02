@@ -77,6 +77,3 @@ python main.py
 Controles rápidos:
 - Movimento: `WASD`
 - Atirar: clique do mouse
-
-Objetivo pedagógico:
-- Permitir que alunos e curiosos vejam, brinquem e modifiquem os algoritmos para entender o impacto de decisões algorítmicas em sistemas dinâmicos.
