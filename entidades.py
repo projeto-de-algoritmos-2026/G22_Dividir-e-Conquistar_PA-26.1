@@ -47,8 +47,9 @@ def _load_sprites():
 
 class Player:
     def __init__(self):
+        _load_sprites()
         self.pos = [LARGURA // 2, ALTURA // 2]
-        self.radius = 10
+        self.radius = 20
         self.speed = 4
         self.health = 100
         self.weapon_angle = 0.0
@@ -78,6 +79,18 @@ class Player:
                 self.invulnerable_timer = 0
 
     def draw(self, surf):
+        try:
+            _load_sprites()
+            if _SHOOTER_SPRITE is not None:
+                size = 48
+                sprite = pygame.transform.smoothscale(_SHOOTER_SPRITE, (size, size))
+                deg = -math.degrees(self.weapon_angle)
+                rotated = pygame.transform.rotate(sprite, deg)
+                rect = rotated.get_rect(center=(int(self.pos[0]), int(self.pos[1])))
+                surf.blit(rotated, rect)
+                return
+        except Exception:
+            pass
         pygame.draw.circle(surf, (60, 180, 75), (int(self.pos[0]), int(self.pos[1])), self.radius)
         gun_length = 20
         gx = self.pos[0] + math.cos(self.weapon_angle) * gun_length
@@ -108,23 +121,18 @@ class Bullet:
         self.pos[1] += self.vel[1]
 
     def draw(self, surf):
-        # try to draw shooter sprite rotated in the direction of travel
-        try:
-            _load_sprites()
-            if _SHOOTER_SPRITE is not None:
-                # desired size for projectile icon
-                size = max(12, int(self.radius * 3))
-                sprite = pygame.transform.smoothscale(_SHOOTER_SPRITE, (size, size))
-                # rotate: pygame rotates counter-clockwise degrees
-                deg = -math.degrees(self.angle)
-                rs = pygame.transform.rotate(sprite, deg)
-                w, h = rs.get_size()
-                surf.blit(rs, (int(self.pos[0] - w / 2), int(self.pos[1] - h / 2)))
-                return
-        except Exception:
-            pass
-        # fallback
-        pygame.draw.circle(surf, (255, 200, 50), (int(self.pos[0]), int(self.pos[1])), self.radius)
+        cos_a = math.cos(self.angle)
+        sin_a = math.sin(self.angle)
+        length = 12
+        width = 5
+        x, y = self.pos
+        dx = cos_a * length
+        dy = sin_a * length
+        px = -sin_a * width / 2
+        py = cos_a * width / 2
+        points = [(x + dx, y + dy), (x - dx/3 + px, y - dy/3 + py), (x - dx/3 - px, y - dy/3 - py)]
+        pygame.draw.polygon(surf, (255, 200, 50), points)
+        pygame.draw.polygon(surf, (200, 150, 0), points, 1)
 
 
 class Zombie:

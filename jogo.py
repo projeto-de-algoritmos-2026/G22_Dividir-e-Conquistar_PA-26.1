@@ -107,7 +107,9 @@ class Jogo:
                             continue
                         if self.game_over:
                             continue
-                        self.bullets.append(Bullet(self.player.pos[0], self.player.pos[1], mx, my))
+                        gun_start_x = self.player.pos[0] + math.cos(self.player.weapon_angle) * 20
+                        gun_start_y = self.player.pos[1] + math.sin(self.player.weapon_angle) * 20
+                        self.bullets.append(Bullet(gun_start_x, gun_start_y, mx, my))
                     elif event.type == pygame.KEYDOWN:
                         if self.game_over:
                             if event.key == pygame.K_r:
